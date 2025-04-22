@@ -17,7 +17,7 @@ int fib(int n)
 #pragma omp task shared(i) firstprivate(n)
         i = fib(n - 1); // Compute fib(n-1) in parallel
 #pragma omp task shared(j) firstprivate(n)
-        jfib(n - 2); // Compute fib(n-2) in parallel
+        j = fib(n - 2); // Compute fib(n-2) in parallel
 #pragma omp taskwait // Ensure both tasks finish before summing
         value[n] = i + j;
         done[n] = 1; // Mark as computed
